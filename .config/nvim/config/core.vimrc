@@ -32,6 +32,7 @@ set shiftwidth=2
 set tabstop=2
 set scrolloff=5
 set autoread
+set inccommand=nosplit
 
 " Jump to the previous location when opening a file
 if has("autocmd")
