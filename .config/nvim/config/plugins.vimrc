@@ -10,6 +10,7 @@ Plug 'ajh17/spacegray.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+
 " Productivity
 " -----------
 Plug 'ctrlpvim/ctrlp.vim'
@@ -35,6 +36,10 @@ Plug 'elmcast/elm-vim'
 Plug 'Shougo/neco-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'hashivim/vim-terraform'
+
+" Fonts
+" -----------
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -69,9 +74,9 @@ vmap <leader><tab><tab> :Tabularize /
 
 " Airline
 """"""""""""""""""""""""""""""""""""""""
-let g:airline_powerline_fonts = 0
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
+let g:airline_powerline_fonts = 1
+"let g:airline_left_sep = ''
+"let g:airline_right_sep = ''
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#hunks#enabled = 0

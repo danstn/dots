@@ -21,6 +21,7 @@ set secure
 set nowrap
 set cursorline
 
+set encoding=utf8
 set backspace=indent,eol,start
 set fillchars+=vert:\ 
 set foldlevel=10
@@ -33,6 +34,7 @@ set tabstop=2
 set scrolloff=5
 set autoread
 set inccommand=nosplit
+set backupcopy=yes
 
 " Jump to the previous location when opening a file
 if has("autocmd")
