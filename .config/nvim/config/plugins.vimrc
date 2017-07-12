@@ -6,10 +6,10 @@ call plug#begin()
 
 " Appearance
 " -----------
-Plug 'ajh17/spacegray.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
+Plug 'altercation/vim-colors-solarized'
+Plug 'arcticicestudio/nord-vim'
 
 " Productivity
 " -----------
@@ -18,12 +18,15 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'mhinz/vim-signify'
 Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'w0rp/ale'
+Plug 'majutsushi/tagbar'
 
 " Editing & Typing Support
 " -----------
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
+Plug 'Shougo/echodoc.vim'
 
 " Haskell
 " -----------
@@ -36,6 +39,30 @@ Plug 'elmcast/elm-vim'
 Plug 'Shougo/neco-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'hashivim/vim-terraform'
+Plug 'jparise/vim-graphql'
+
+
+" Go
+" -----------
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'zchee/deoplete-go', { 'do': 'make' }
+
+" XML
+" -----------
+"Plug 'alvan/vim-closetag'
+"Plug 'Valloric/MatchTagAlways'
+
+" Javascript
+" -----------
+Plug 'pangloss/vim-javascript'
+Plug 'isRuslan/vim-es6'
+Plug 'mxw/vim-jsx'
+Plug 'fleischie/vim-styled-components'
+
+" CSS
+" -----------
+Plug 'ap/vim-css-color'
+Plug 'JulesWang/css.vim'
 
 " Fonts
 " -----------
@@ -48,11 +75,13 @@ nmap <leader>f :NERDTreeToggle<CR>
 nmap <leader>F :NERDTreeFind<CR>
 
 " Deoplete
+autocmd CompleteDone * silent! pclose!
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#max_abbr_width = 0
 let g:deoplete#max_menu_width = 0
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+set completeopt-=preview
 
 " Neco GHC
 let g:necoghc_enable_detailed_browse = 1
@@ -80,7 +109,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#hunks#enabled = 0
-let g:airline_theme = 'ravenpower'
+let g:airline_theme = 'nord'
 
 " Ctrl-P
 """"""""""""""""""""""""""""""""""""""""
@@ -95,9 +124,41 @@ let g:ctrlp_custom_ignore = {
 let g:elm_setup_keybindings = 1
 let g:elm_format_autosave = 0
 
+" Javascript
+""""""""""""""""""""""""""""""""""""""""
+let g:javascript_plugin_jsdoc = 1
+let g:jsx_ext_required = 0
+
+" XML
+""""""""""""""""""""""""""""""""""""""""
+"let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.jsx,*.js"
+
 " Yankstack
 """"""""""""""""""""""""""""""""""""""""
 call yankstack#setup()
 nmap <leader>o <Plug>yankstack_substitute_older_paste
 nmap <leader>O <Plug>yankstack_substitute_newer_paste
 
+" Ale
+""""""""""""""""""""""""""""""""""""""""
+let g:ale_echo_msg_format = '%linter% >> %s'
+let g:ale_sign_warning = '?' " could use emoji
+let g:ale_statusline_format = ['X %d', '? %d', '']
+
+let g:ale_linters = {'javascript': ['flow']}
+let g:ale_lint_on_save = 1
+
+let g:ale_fixers = {'javascript': ['prettier']}
+let g:ale_fix_on_save = 0
+let g:ale_set_highlights = 1
+
+let g:ale_javascript_standard_use_global = 0
+let g:ale_javascript_prettier_options = '--no-semi'
+
+"let g:ale_javascript_standard_options = '--fix'
+"autocmd bufwritepost *.js !standard --parser babel-eslint --fix %
+"set autoread
+
+" Tagbar
+""""""""""""""""""""""""""""""""""""""""
+nmap <F8> :TagbarToggle<CR>

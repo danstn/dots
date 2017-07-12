@@ -19,7 +19,8 @@ set hidden
 set exrc         " support local vimrc
 set secure
 set nowrap
-set cursorline
+"set cursorline
+set noshowmode
 
 set encoding=utf8
 set backspace=indent,eol,start
