@@ -27,7 +27,7 @@ set backspace=indent,eol,start
 set fillchars+=vert:\ 
 set foldlevel=10
 set laststatus=2
-set listchars=tab:=»,trail:·
+set listchars=tab:\ \ ,trail:·
 set mouse=a
 set pastetoggle=<F2>
 set shiftwidth=2

@@ -20,6 +20,7 @@ Plug 'mhinz/vim-signify'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
+Plug 'mileszs/ack.vim'
 
 " Editing & Typing Support
 " -----------
@@ -27,6 +28,9 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'Shougo/echodoc.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 
 " Haskell
 " -----------
@@ -40,6 +44,12 @@ Plug 'Shougo/neco-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'hashivim/vim-terraform'
 Plug 'jparise/vim-graphql'
+
+" Clojure
+" ----------
+Plug 'venantius/vim-cljfmt'
+Plug 'vim-scripts/paredit.vim'
+Plug 'tpope/vim-fireplace'
 
 
 " Go
@@ -58,27 +68,35 @@ Plug 'pangloss/vim-javascript'
 Plug 'isRuslan/vim-es6'
 Plug 'mxw/vim-jsx'
 Plug 'fleischie/vim-styled-components'
+Plug 'galooshi/vim-import-js'
 
 " CSS
 " -----------
 Plug 'ap/vim-css-color'
 Plug 'JulesWang/css.vim'
 
+" PSQL
+" -----------
+"Plug 'exu/pgsql.vim'
+
 " Fonts
 " -----------
-Plug 'ryanoasis/vim-devicons'
+"Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
 " NERDTree
 nmap <leader>f :NERDTreeToggle<CR>
 nmap <leader>F :NERDTreeFind<CR>
+let NERDTreeMinimalUI = 1
 
 " Deoplete
 autocmd CompleteDone * silent! pclose!
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#max_abbr_width = 0
 let g:deoplete#max_menu_width = 0
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#auto_complete_delay = 25
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 set completeopt-=preview
@@ -110,6 +128,12 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#hunks#enabled = 0
 let g:airline_theme = 'nord'
+
+" Airline
+""""""""""""""""""""""""""""""""""""""""
+let g:nord_uniform_status_lines = 1
+let g:nord_uniform_diff_background = 1
+let g:nord_italic_comments = 1
 
 " Ctrl-P
 """"""""""""""""""""""""""""""""""""""""
@@ -145,11 +169,11 @@ let g:ale_echo_msg_format = '%linter% >> %s'
 let g:ale_sign_warning = '?' " could use emoji
 let g:ale_statusline_format = ['X %d', '? %d', '']
 
-let g:ale_linters = {'javascript': ['flow']}
+let g:ale_linters = {'javascript': ['flow', 'eslint']}
 let g:ale_lint_on_save = 1
 
 let g:ale_fixers = {'javascript': ['prettier']}
-let g:ale_fix_on_save = 0
+let g:ale_fix_on_save = 1
 let g:ale_set_highlights = 1
 
 let g:ale_javascript_standard_use_global = 0
@@ -162,3 +186,12 @@ let g:ale_javascript_prettier_options = '--no-semi'
 " Tagbar
 """"""""""""""""""""""""""""""""""""""""
 nmap <F8> :TagbarToggle<CR>
+
+" PGSQL
+""""""""""""""""""""""""""""""""""""""""
+let g:sql_type_default = 'pgsql'
+
+" UltiSnips
+""""""""""""""""""""""""""""""""""""""""
+let g:UltiSnipsExpandTrigger="<c-s-C>"
+autocmd FileType javascript UltiSnipsAddFiletypes javascript-es6-react

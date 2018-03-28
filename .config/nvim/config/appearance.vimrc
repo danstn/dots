@@ -15,6 +15,7 @@ hi SignColumn ctermfg=white
 hi NonText ctermfg=white
 
 hi Error ctermfg=red ctermbg=none
+hi MatchParen ctermbg=none ctermfg=red
 
 "hi CursorLine ctermbg=236
 "hi CursorLine ctermbg=none
